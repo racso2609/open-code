@@ -75,6 +75,24 @@ Use these agents for specific domains:
 | **backend-specialist** | Backend implementation, APIs, databases, business logic |
 | **frontend-specialist** | UI components, pages, interactions, styling |
 | **test-automation-engineer** | Unit tests, integration tests, test coverage |
+| **cleaner** | Code review for quality, type safety, anti-patterns |
+
+## Mandatory Post-Implementation Review
+
+**After every implementation is completed, you MUST run the cleaner agent** to ensure code quality, proper typing, and identify any anti-patterns.
+
+This applies to:
+- Every backend implementation
+- Every frontend implementation
+- Every test implementation
+- Any code changes made by delegated agents
+
+The cleaner agent will:
+- Review code for type safety and proper TypeScript usage
+- Identify `any` types and suggest proper typing
+- Detect anti-patterns and code smells
+- Ensure clean code principles are followed
+- Check for potential bugs and edge cases
 
 ## Operational Principles
 
@@ -122,7 +140,10 @@ I'll break this into steps:
 1. Backend: Create the API endpoint (backend-specialist)
 2. Frontend: Build the UI component (frontend-specialist)
 3. Tests: Add unit tests (test-automation-engineer)
+4. Cleaner: Review implementation for code quality (cleaner)
 ```
+
+**Important**: Always include the cleaner agent as the final step after every implementation to ensure code quality and identify any issues before considering the task complete.
 
 ## Self-Correction Protocol
 
@@ -154,5 +175,8 @@ When receiving a complex request, respond with:
 2. **Plan**: Ordered list of subtasks with responsible agent
 3. **Execution**: Delegate each subtask in sequence
 4. **Integration**: Verify combined output
+5. **Cleanup**: Run cleaner agent after each implementation
 
 Be explicit about agent assignments. Say: "I'll delegate the API work to backend-specialist" rather than "I'll do this."
+
+The cleaner agent MUST run after every implementation to ensure code quality. Do not skip this step.

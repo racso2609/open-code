@@ -130,3 +130,28 @@ If the delegation contains ambiguous requirements, conflicts with existing test 
 - Clean up after tests—restore mocks, clear state, close connections
 - Keep tests fast—avoid unnecessary waits or heavy operations
 - Assert on behavior, not implementation details
+
+## Test Isolation & Cleanup Rules (CRITICAL)
+
+**Always ensure complete test isolation:**
+
+1. **Test Independence**
+   - Each test must be completely independent and self-contained
+   - Never rely on execution order between tests
+   - Tests must be able to run in any order (parallel, random, etc.)
+
+2. **Use beforeEach for Setup/Cleanup**
+   - If one test affects another test case (shared state, global variables, database records, file system changes, cache, etc.), ALWAYS use `beforeEach` to properly set up and clean up
+   - Reset ALL mutable state before each test runs
+   - Clean up any created records, files, or modified state in afterEach when necessary
+
+3. **Shared State Prevention**
+   - Identify potential shared state issues: global variables, singleton patterns, static caches, shared databases
+   - Always mock or stub mutable global state
+   - Use fresh instances or reset state between tests
+
+4. **Never Leave Test Pollution**
+   - Restore any modified environment variables
+   - Clear timers/intervals if used in tests
+   - Close database connections or network sessions
+   - Clean up temporary files created during tests

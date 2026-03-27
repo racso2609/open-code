@@ -1,7 +1,7 @@
 ---
 description: Reviews code for quality and best practices
 mode: subagent
-# model: anthropic/claude-sonnet-4-20250514
+model: google/gemini-3-pro-preview"
 temperature: 0.1
 tools:
   write: false
